@@ -1,0 +1,27 @@
+Use the Sakila schema, which can be found in following link (to be installed in your local system)
+http://dev.mysql.com/doc/index-other.html("sakila database")
+http://dev.mysql.com/doc/sakila/en/sakila.html(for full documentation)
+Requirements
+For each question, you are required to provide the following:
+- The SQL query you used
+- The answers
+- Any assumptions you made
+5. Problem Statement
+
+
+
+4. Return the first name, last name and city of all customers who live in Canada. Order the re-sults first by the last then by the first name.
+
+select customer.first_name, customer.last_name, customer_list.city from customer inner join customer_list on customer.customer_id=customer_list.id and country='canada' order by customer.last_name, customer.first_name;
+
+
+
+5. How many customers are from Brazil??
+
+select count(*) from customer_list where country='Brazil';
+
+
+
+6. Return the "popular countries"? (that is, the ones with more than 20 customer). For each such country, return its name and its correspond number of customers. Order the result by the number of customers (descending).
+
+select country,count(country) as count from customer_list group by country having count(country)>20 order by count desc;
